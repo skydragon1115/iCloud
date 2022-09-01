@@ -19,14 +19,14 @@ class ViewController: UIViewController {
         iCloud.shared().setupiCloudDocumentSync(withUbiquityContainer: nil)
         iCloud.shared().checkAvailability()
         
-        uploadFile()
-//        downloadFile()
+//        uploadFile()
+        downloadFile()
     }
 
     func uploadFile() {
         let image = UIImage(named: "image.png")
         if let data = image?.jpegData(compressionQuality: 1.0) {
-            iCloud.shared().saveAndCloseDocument(withName: "meerkat.png", withContent: data) { cloudDocument, documentData, error in
+            iCloud.shared().saveAndCloseDocument(withName: "test.png", withContent: data) { cloudDocument, documentData, error in
                 print ("save data to iCloud")
                 iCloud.shared().updateFiles()
             }
@@ -34,15 +34,15 @@ class ViewController: UIViewController {
     }
     
     func downloadFile() {
-        let fileExists = iCloud.shared().doesFileExist(inCloud: "meerkat.png")
+        let fileExists = iCloud.shared().doesFileExist(inCloud: "test.png")
         print ("fileExists: ", fileExists)
         if (fileExists == true) {
-            iCloud.shared().retrieveCloudDocument(withName: "meerkat.png") { cloudDocument, documentData, error in
+            iCloud.shared().retrieveCloudDocument(withName: "test.png") { cloudDocument, documentData, error in
                 if (error == nil) {
                     let fileUrl = cloudDocument?.fileURL
                     print ("download data: \(fileUrl)")
                     let tempDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
-                    let targetURL = tempDirectoryURL.appendingPathComponent("meerkat.png")
+                    let targetURL = tempDirectoryURL.appendingPathComponent("test.png")
                     do {
                         if (FileManager.default.fileExists(atPath: targetURL.path)) {
                             try FileManager.default.removeItem(at: targetURL)
