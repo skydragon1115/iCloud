@@ -1,0 +1,16 @@
+PODS:
+  - iCloudDocumentSync (7.4.1)
+
+DEPENDENCIES:
+  - iCloudDocumentSync
+
+SPEC REPOS:
+  trunk:
+    - iCloudDocumentSync
+
+SPEC CHECKSUMS:
+  iCloudDocumentSync: 961aac30ca09c221de4c236e94dae69912f2c589
+
+PODFILE CHECKSUM: e27dee4c3ecfe25a13e8fb19247d94b2ae27abde
+
+COCOAPODS: 1.11.3
